@@ -36,18 +36,18 @@ func readFile(filePath string) []string {
 	return res
 }
 
-func sortWords(filePath string) [][]string {
-	matrix := new([][]string)
-
+func sortWords(filePath string) map[string][]string {
+	matrix := make(map[string][]string)
 	slice := readFile(filePath)
 
-	log.Print(len(slice))
+	var old string
 
+	log.Print(slice)
 	for i, word := range slice {
-		for _, word2 := range slice {
-			if sortString(word2) == sortString(word) {
-
-				matrix[i] = append(matrix[i], word2)
+		for j := i + len(matrix[sortString(word)]); j < len(slice); j++ {
+			if sortString(word) == sortString(slice[j]) && slice[j] != old {
+				matrix[sortString(word)] = append(matrix[sortString(word)], slice[j])
+				old = slice[j]
 			}
 		}
 	}
