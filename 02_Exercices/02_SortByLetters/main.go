@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"log"
 	"os"
 	"sort"
 )
@@ -13,21 +14,44 @@ type sortRuneString []rune
 
 const filePath = "words.txt"
 
-func readFile(filePath string) ([]string, error) {
-	fileHandler, err := os.Open(filePath)
-	if err != nil {
-		return nil, err
-	}
-	defer fileHandler.Close()
-
+func readFile(filePath string) []string {
 	var res []string
+	file, err := os.Open(filePath)
 
-	scanner := bufio.NewScanner(fileHandler)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	scanner.Split(bufio.ScanWords)
+
 	for scanner.Scan() {
 		res = append(res, scanner.Text())
 	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
 
-	return res, nil
+	return res
+}
+
+func sortWords(filePath string) [][]string {
+	matrix := new([][]string)
+
+	slice := readFile(filePath)
+
+	log.Print(len(slice))
+
+	for i, word := range slice {
+		for _, word2 := range slice {
+			if sortString(word2) == sortString(word) {
+
+				matrix[i] = append(matrix[i], word2)
+			}
+		}
+	}
+	return matrix
 }
 
 func sortString(input string) string {
@@ -50,6 +74,5 @@ func (s sortRuneString) Len() int {
 }
 
 func main() {
-	//log.Print(readFile(filePath))
-	sortString("cezar")
+	log.Print(sortWords(filePath))
 }
