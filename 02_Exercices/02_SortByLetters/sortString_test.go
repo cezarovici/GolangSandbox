@@ -11,6 +11,6 @@ func TestSortString(t *testing.T) {
 	want := "abc"
 
 	for _, word := range got {
-		assert.Equal(t, sortString(word), want, "check if the word is sorted")
+		assert.Equal(t, extractLettersFromWord(word), want, "check if the word is sorted")
 	}
 }
