@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"sort"
 	"strings"
 )
@@ -11,26 +11,30 @@ import (
 
 var _words = []string{"eat", "tea", "tan", "ate", "nat", "bat"}
 
-func sortWords(words []string) map[string][]string {
-	matrix := make(map[string][]string)
+func main() {
+	parsed := parseWords(_words)
 
-	var old string
-
-	log.Print(words)
-	for i, word := range words {
-		for j := i + len(matrix[sortString(word)]); j < len(words); j++ {
-			if sortString(word) == sortString(words[j]) && words[j] != old {
-				matrix[sortString(word)] = append(matrix[sortString(word)], words[j])
-				old = words[j]
-			}
-		}
+	for _, words := range parsed {
+		fmt.Println(words)
 	}
-	return matrix
 }
-func sortString(word string) string {
+
+func extractLettersFromWord(word string) string {
 	res := strings.Split(word, "")
 
 	sort.Strings(res)
 
 	return strings.Join(res, "")
+}
+
+func parseWords(words []string) map[string][]string {
+	res := make(map[string][]string)
+
+	for _, word := range words {
+		letters := extractLettersFromWord((word))
+
+		res[letters] = append(res[letters], word)
+	}
+
+	return res
 }
