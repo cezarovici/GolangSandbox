@@ -1,28 +1,31 @@
 package main
 
-import (
-	"io/ioutil"
-	"log"
-	"strings"
-)
+const IN = 1
+const OUT = 0
 
-const _filePath = "text.txt"
-
-func readFile(filePath string) string {
-	content, err := ioutil.ReadFile(filePath)
-	if err != nil {
-		log.Panic()
-	}
-	return string(content)
-}
+const words = "Hello ! How are you ?\nFine,how about you ?\n- Ok"
 
 func countWords(file string) int {
-	words := strings.FieldsFunc(file, split)
+	var (
+		state int
+		wc    int
+	)
 
-	return len(words)
+	words := []byte(file)
+
+	for _, char := range words {
+		if split(char) {
+			state = OUT
+		} else if state == OUT {
+			state = IN
+			wc++
+		}
+	}
+
+	return wc
 }
 
-func split(s rune) bool {
+func split(s byte) bool {
 	return s <= 'A' || s >= 'z'
 }
 
