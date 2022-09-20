@@ -1,9 +1,16 @@
 folder-root1
  folder1
+   main.go     functii.go
+     ok.go
  folder2
+ # pacakge main
   subfolder3
   subfolder4
-   subfolder5
- folder6
+  subfolder5
+     # t
+      main.go
+    functii.go
+  folder6
+ header.go
 folder-root2
 folder-root3
