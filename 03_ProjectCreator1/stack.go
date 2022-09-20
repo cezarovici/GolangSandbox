@@ -39,6 +39,3 @@ func (s stack) String() string {
 
 	return strings.Join(res, "/")
 }
-func (s *stack) clearStack() {
-	s = new(stack)
-}
