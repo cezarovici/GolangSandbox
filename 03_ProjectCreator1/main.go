@@ -102,6 +102,17 @@ func parse(entries []*entry) []string {
 
 	for ix, entry := range entries {
 
+		if typeofFile(entry.folderInfo) == "path" {
+			stackFolders = nil
+			stackIndents = nil
+			stackPackages = nil
+
+			res = append(res, "cd "+getPackage(entry.folderInfo))
+
+			stackIndents.push(entry.indent)
+
+			continue
+		}
 		if typeofFile(entry.folderInfo) == "pack" {
 			stackPackages.push(getPackage(entry.folderInfo))
 
@@ -109,8 +120,8 @@ func parse(entries []*entry) []string {
 		}
 
 		if typeofFile(entry.folderInfo) == "file" {
-			pack := stackPackages.front()
-			files := lineParser(entry.folderInfo, pack)
+			pack := stackPackages.peek()
+			files := lineParser(entry.folderInfo, pack.(string))
 
 			for _, file := range files {
 				line := stackFolders.String() + "/" + file
