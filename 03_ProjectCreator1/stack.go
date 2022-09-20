@@ -19,6 +19,12 @@ func (s *stack) peek() any {
 	return (*s)[len(*s)-1]
 }
 
+func (s *stack) front() string {
+	item := (*s)[len(*s)-1]
+
+	return item.(string)
+}
+
 func (s *stack) pop() (any, error) {
 	if len(*s) == 0 {
 		return "", errors.New("stack is empty")
