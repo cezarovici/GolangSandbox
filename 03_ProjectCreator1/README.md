@@ -28,13 +28,13 @@ First of all, let me present you the keywords or...key characters
 ### **Point of reference** <br>
 
 `!` change the path to the one that you introduce after it 
-in our case : ```! .``` means that we remain in the same path
+in our case : ```! .``` means that you remain in the same path
 
 ### **File package**
 
 `#` can be followed by 2 things like in our example :
 
-####1. something that can be written in all the file from the directory that we are in####
+#### 1. something that can be written in all the file from the directory that we are in
 
 Example : 
 
