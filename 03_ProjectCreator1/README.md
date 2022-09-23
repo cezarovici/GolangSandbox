@@ -2,7 +2,7 @@
 
 ## This documentation will help you to use the package easely
 
-###By moment we will use a file text as our package controler
+###By moment we will use a file text as our package controler###
 
 Here is an example
 
