@@ -25,12 +25,12 @@ folder1
 Let me explain for you, what this package can do <br>
 First of all, let me present you the keywords or...key characters 
 
-###**Point of reference** ###<br>
+### **Point of reference** <br>
 
 `!` change the path to the one that you introduce after it 
 in our case : ```! .``` means that we remain in the same path
 
-###**File package**###
+### **File package**
 
 `#` can be followed by 2 things like in our example :
 
@@ -67,7 +67,7 @@ subfolder1
 After the line `# package main` in the directory that contain all 4 files first of those lines will be `# package main`
  
 
-####2. Can transform all the file bellow, from the current directory to test files (this is working by now only for golang)####
+#### 2. Can transform all the file bellow, from the current directory to test files (this is working by now only for golang)####
 
 Example :
 
@@ -78,7 +78,7 @@ Example :
 
 `file5.go` will become `file5_test.go`
 
-###**Line indendation** ###<br>
+### **Line indendation** <br>
 
 Every line indentation is important except for key lines which I presented above
 Think about it like stairs, every line is idented with a number of spaces that represent the level on that directory
