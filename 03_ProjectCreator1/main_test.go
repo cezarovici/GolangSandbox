@@ -22,14 +22,18 @@ func TestFile(t *testing.T) {
 
 	entries := parse(convertToEntries(content))
 
-	fmt.Println(strings.Join(entries, "\n"))
+	for _, file := range entries {
+		err := checkIfExist(file)
+		assert.Equal(t, err, nil, "No match for file", file)
+	}
+
 }
 
 func TestTypeofFile(t *testing.T) {
 	got := []string{"! .", "# package main", "file.go", "folder"}
 	want := []string{"path", "package", "file", "folder"}
 
-	for i, _ := range got {
+	for i := range got {
 		assert.Equal(t, typeofFile(got[i]), want[i], "verify the type of file")
 		fmt.Println(got[i], "is a", want[i])
 	}

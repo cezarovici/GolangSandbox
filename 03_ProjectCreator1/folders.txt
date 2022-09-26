@@ -1,13 +1,11 @@
-! .
-folder1
- subfolder1
- # go-package-name
- file1.go file2.go
-    file3.go
- file4.go
- subfolder2
- # t
- file5.go
-  subsubfolder1
-! /home/apetroaei/ram
+folder-root1
+ folder1
  folder2
+   main.go functii.go header.go
+   blabla.go
+  subfolder3
+  subfolder4
+   subfolder5     
+ folder6
+folder-root2
+folder-root3

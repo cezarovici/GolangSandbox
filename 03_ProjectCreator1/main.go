@@ -102,17 +102,19 @@ func parse(entries []*entry) []string {
 
 	for ix, entry := range entries {
 
-		if typeofFile(entry.folderInfo) == "path" {
-			stackFolders = nil
-			stackIndents = nil
-			stackPackages = nil
+		// if typeofFile(entry.folderInfo) == "path" {
+		// 	stackFolders = nil
+		// 	stackIndents = nil
+		// 	stackPackages = nil
 
-			res = append(res, "cd "+getPackage(entry.folderInfo))
+		// 	res = append(res, getPackage(entry.folderInfo))
 
-			stackIndents.push(entry.indent)
+		// 	stackIndents.push(getPackage(entry.folderInfo))
+		// 	changeDirectory(getPackage(entry.folderInfo))
 
-			continue
-		}
+		// 	continue
+		// }
+
 		if typeofFile(entry.folderInfo) == "pack" {
 			stackPackages.push(getPackage(entry.folderInfo))
 
@@ -125,7 +127,13 @@ func parse(entries []*entry) []string {
 
 			for _, file := range files {
 				line := stackFolders.String() + "/" + file
-				res = append(res, "touch "+line)
+				res = append(res, line)
+
+				// if pack != "t" {
+				// 	res = append(res, "echo \""+pack.(string)+"\" > "+stackFolders.String()+"/"+file)
+				// }
+				createFile(line)
+
 			}
 
 			continue
@@ -135,7 +143,8 @@ func parse(entries []*entry) []string {
 			stackFolders.push(entry.folderInfo)
 			stackIndents.push(0)
 
-			res = append(res, "mkdir "+stackFolders.String())
+			res = append(res, stackFolders.String())
+			createFolder(stackFolders.String())
 
 			continue
 		}
@@ -145,7 +154,8 @@ func parse(entries []*entry) []string {
 			stackIndents.push(entry.indent)
 			stackPackages.push("")
 
-			res = append(res, "mkdir "+stackFolders.String())
+			res = append(res, stackFolders.String())
+			createFolder(stackFolders.String())
 
 			continue
 		}
@@ -156,7 +166,8 @@ func parse(entries []*entry) []string {
 			stackIndents.push(entry.indent)
 			stackPackages.push("")
 
-			res = append(res, "mkdir "+stackFolders.String())
+			res = append(res, stackFolders.String())
+			createFolder(stackFolders.String())
 
 			continue
 		}
@@ -176,12 +187,13 @@ func parse(entries []*entry) []string {
 		stackFolders.push(entry.folderInfo)
 		stackIndents.push(entry.indent)
 
-		res = append(res, "mkdir "+stackFolders.String())
+		res = append(res, stackFolders.String())
+		createFolder(stackFolders.String())
 	}
 
 	return res
 }
 
 func main() {
-	// go test -run TestFile
+
 }
