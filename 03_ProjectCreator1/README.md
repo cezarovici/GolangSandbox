@@ -1,58 +1,21 @@
 # Package Creator 
 
-## This documentation will help you to use the package easely
+### **Change Directory** <br>
 
-### By moment we will use a file text as our package controler 
-
-Here is an example
-
-```
-! .
-folder1
- subfolder1
- # package main
- file1.go file2.go
-    file3.go
- file4.go
- subfolder2
- # t
- file5.go
-  subsubfolder1
-! /home/apetroaei/ram
- folder2
-```
-
-Let me explain for you, what this package can do <br>
-First of all, let me present you the keywords or...key characters 
-
-### **Point of reference** <br>
-
-`!` change the path to the one that you introduce after it 
-in our case : ```! .``` means that you remain in the same path
+`! path` = cd path
 
 ### **File package**
 
-`#` can be followed by 2 things like in our example :
+`#` can be followed by two things :
 
-#### 1. something that can be written in all the file from the directory that we are in
+#### 1. something that can be written in all the files from the directory that we are in
 
 Example : 
-
-a.
 
 ```go
 package main
 ```
 The command will be `# package main` after the directory that we want to set the package
-
-b.
-
-```c++
-#include <iostream>
-using namespace std;
-```
-
-The command will be `# #include <iostream> \n using namespace std;`
 
 Example :
 
@@ -64,10 +27,10 @@ subfolder1
  file4.go
 ```
 
-After the line `# package main` in the directory that contain all 4 files first of those lines will be `# package main`
+After the line `# package main` in the directory that contains all four files first of those lines will be `# package main`
  
 
-#### 2. Can transform all the file bellow, from the current directory to test files (this is working by now only for golang)####
+#### 2. Can transform all the files below, from the current directory to test files ####
 
 Example :
 
@@ -80,10 +43,7 @@ Example :
 
 ### **Line indendation** <br>
 
-Every line indentation is important except for key lines which I presented above
-Think about it like stairs, every line is idented with a number of spaces that represent the level on that directory
-
-Exemple :
+Example :
 
 ```
 folder1
@@ -94,5 +54,5 @@ folder1
 ```
 
 In the specified path will be created `folder1` with  `subfolder1`   &    `subfolder2` as his children <br> `subfolder2` will the father of `subsubfolder1` <br><br>
-We can even go backwards    `subfolder3`    will be created also in     `folder1`
+We can even go backward `subfolder3`    will be created also in     `folder1`
 
