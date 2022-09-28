@@ -11,7 +11,7 @@ func sortBySwapping(array []int) []int {
 	for mid <= high {
 		switch array[mid] {
 		case 0:
-			array[low], array[mid] = array[mid], array[low]as
+			array[low], array[mid] = array[mid], array[low]
 			low++
 		case 2:
 			array[high], array[mid] = array[mid], array[high]
