@@ -72,8 +72,10 @@ func stringToNumber(value string) int {
 const exp = "2+6+4"
 
 func main() {
-	var e expression
-	e.setInfos(exp)
-	e.printExpresion()
-	// log.Print(stringToNumber("123"))
+	// var e expression
+
+	// e.setInfos(exp)
+	// e.printExpresion()
+
+	log.Print(stringToNumber("abc"))
 }

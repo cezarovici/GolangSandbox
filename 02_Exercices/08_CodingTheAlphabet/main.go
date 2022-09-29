@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -42,5 +43,42 @@ func convertStringToIndex(input string) int {
 	return int(res)
 }
 
+func toBinary(number int) int {
+	var binary int
+	var power int
+
+	power = 1
+
+	for number > 0 {
+		if number%2 != 0 {
+			binary = binary + (number%2)*power
+		}
+		power = power * 10
+		number = number / 2
+	}
+	return binary
+}
+
+func binaryTable(max int) []int {
+	var table []int
+
+	for i := 0; i <= max; i++ {
+		table = append(table, toBinary(i))
+	}
+
+	return table
+}
+
+func generateCombinations(number int) {
+
+	for j := 'a'; j <= 'z'; j++ {
+		for i := 'a'; i <= 'z'; i++ {
+			fmt.Printf("%c%c ", fromAsciiToIndex(j), fromAsciiToIndex(i))
+		}
+		fmt.Println()
+	}
+
+}
 func main() {
+	generateCombinations(10)
 }

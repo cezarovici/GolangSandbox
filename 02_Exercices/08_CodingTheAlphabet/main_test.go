@@ -25,3 +25,22 @@ func TestConvertStringToIndex(t *testing.T) {
 		})
 	}
 }
+
+func TestToBinary(t *testing.T) {
+	testCases := []struct {
+		description string
+		input       int
+		want        int
+	}{
+		{"1", 1, 1},
+		{"2", 2, 10},
+		{"5", 5, 101},
+		{"16", 16, 10000},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			assert.Equal(t, tc.want, toBinary(tc.input))
+		})
+	}
+}
