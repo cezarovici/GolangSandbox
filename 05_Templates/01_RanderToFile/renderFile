@@ -1,5 +1,8 @@
+package test
 
-func Testfoo.go(){
+import (
+	"testing"
+)
+
+func TestFoo() {
 }
-
-

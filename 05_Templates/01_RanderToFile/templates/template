@@ -1,8 +1,12 @@
+package {{.Package}}
 {{if .IsTestFile}}
+import(
+	"testing"
+)
 func Test{{.FileName}}(){
 }
 {{else}}
-func main(){
+func {{.FileName}}(){
 }
 {{end}}
 

@@ -9,6 +9,7 @@ import (
 type File struct {
 	FileName   string
 	IsTestFile bool
+	Package    string
 }
 
 func RenderToPath(templateFilePath, renderToPath string, model File) error {
@@ -32,8 +33,9 @@ func RenderToPath(templateFilePath, renderToPath string, model File) error {
 
 func main() {
 	f := File{
-		FileName:   "foo.go",
+		FileName:   "Foo",
 		IsTestFile: true,
+		Package:    "test",
 	}
 
 	log.Print(RenderToPath("templates/template", "renderFile", f))
