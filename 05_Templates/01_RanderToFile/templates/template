@@ -1,0 +1,8 @@
+{{if .IsTestFile}}
+func Test{{.FileName}}(){
+}
+{{else}}
+func main(){
+}
+{{end}}
+
